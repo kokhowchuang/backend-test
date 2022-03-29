@@ -1,0 +1,52 @@
+{
+  "name": "node-babel",
+  "version": "1.0.0",
+  "description": "Node-Babel Boilerplate",
+  "main": "server.js",
+  "scripts": {
+    "dev": "npm run start:dev",
+    "start:dev": "NODE_ENV=development nodemon --exec babel-node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon --exec babel-node server.js"
+  },
+  "author": "Mschifter",
+  "license": "MIT",
+  "keywords": [
+    "boogiz",
+    "heroku"
+  ],
+  "dependencies": {
+    "@sendgrid/mail": "^7.4.0",
+    "aws-sdk": "^2.841.0",
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-bearer-token": "^2.4.0",
+    "firebase-admin": "^9.8.0",
+    "jsonwebtoken": "^8.5.1",
+    "method-override": "^3.0.0",
+    "moment": "^2.29.1",
+    "mongoose": "^5.12.9",
+    "multer": "^1.4.2",
+    "multer-s3": "^2.9.0",
+    "passport": "^0.4.1",
+    "passport-facebook": "^3.0.0",
+    "passport-local": "^1.0.0",
+    "pug": "^3.0.2",
+    "speakeasy": "^2.0.0",
+    "twilio": "^3.62.0",
+    "winston": "^3.3.3",
+    "winston-daily-rotate-file": "^4.5.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.12.8",
+    "@babel/core": "^7.12.9",
+    "@babel/node": "^7.12.6",
+    "@babel/preset-env": "^7.12.7",
+    "nodemon": "^2.0.6"
+  },
+  "engines": {
+    "node": "10.x"
+  }
+}
