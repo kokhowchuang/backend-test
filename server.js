@@ -99,8 +99,10 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 import authRouter from "./app/routes/auth";
+import productRouter from "./app/routes/product";
 
 app.use("/", authRouter);
+app.use("/", productRouter);
 
 const server = ioServer.listen(port);
 
