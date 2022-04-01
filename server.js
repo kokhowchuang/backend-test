@@ -10,8 +10,11 @@ const fs = require("fs");
 const cors = require("cors");
 const app = express();
 const ioServer = require("http").createServer(app);
+const io = require("socket.io")(ioServer);
 
 import { variable } from "./app/config/environment_variable";
+import mongoose from "mongoose";
+import Review from "./app/models/review";
 
 const env = process.env.NODE_ENV || "development";
 
@@ -103,6 +106,30 @@ import productRouter from "./app/routes/product";
 
 app.use("/", authRouter);
 app.use("/", productRouter);
+
+io.on("connection", (socket) => {
+  socket.on("rating", (data) => {
+    const productId = mongoose.Types.ObjectId(data.productId);
+    const score = parseFloat(data.rating);
+    const review = data.review;
+
+    const newReview = new Review();
+    newReview.productId = productId;
+    newReview.score = score;
+    newReview.review = review;
+
+    newReview.save(function (err) {
+      if (err) {
+        // error handling
+      }
+
+      socket.broadcast.emit("newRating", {
+        score,
+        review,
+      });
+    });
+  });
+});
 
 const server = ioServer.listen(port);
 
