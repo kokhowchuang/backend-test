@@ -8,7 +8,7 @@ const env = process.env.NODE_ENV || "development";
 const router = express.Router();
 
 // Routes to perform all own tasks
-router.post("/product/", productController.saveProduct);
+router.post("/product/", [validateToken], productController.saveProduct);
 router.get("/product/:_productId", productController.getProduct);
 
 router.get("/product/:_productId/reviews", productController.getProductReview);

@@ -103,9 +103,11 @@ app.use(passport.session());
 
 import authRouter from "./app/routes/auth";
 import productRouter from "./app/routes/product";
+import postRouter from "./app/routes/post";
 
 app.use("/", authRouter);
 app.use("/", productRouter);
+app.use("/", postRouter);
 
 io.on("connection", (socket) => {
   socket.on("rating", (data) => {
