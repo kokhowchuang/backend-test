@@ -105,6 +105,13 @@ import authRouter from "./app/routes/auth";
 import productRouter from "./app/routes/product";
 import postRouter from "./app/routes/post";
 
+app.get("/", (req, res) => {
+  return res.status(400).json({
+    errorMessage: 400,
+    errorMessage: "This is API for mobile app",
+  });
+});
+
 app.use("/", authRouter);
 app.use("/", productRouter);
 app.use("/", postRouter);
@@ -134,12 +141,5 @@ app.use("/", postRouter);
 // });
 
 const server = ioServer.listen(port);
-
-app.get("/", (req, res) => {
-  res.status(400).json({
-    errorMessage: 400,
-    errorMessage: "This is API for mobile app",
-  });
-});
 
 console.log("> Listening at " + uri + "\n");
