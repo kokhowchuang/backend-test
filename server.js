@@ -135,4 +135,11 @@ app.use("/", postRouter);
 
 const server = ioServer.listen(port);
 
+app.get("/", (req, res) => {
+  res.status(400).json({
+    errorMessage: 400,
+    errorMessage: "This is API for mobile app",
+  });
+});
+
 console.log("> Listening at " + uri + "\n");
